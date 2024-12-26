@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using MyHome.Api.Data;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<MyHomDBContext>(options =>
+    options.UseSqlite("Data Source=MyHomeDatabase.db"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
